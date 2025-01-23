@@ -1,6 +1,6 @@
-import { readFile } from "fs/promises";
+const { readFile } = require("fs/promises");
 
-import express from "express";
+const express = require("express");
 
 const app = express();
 
