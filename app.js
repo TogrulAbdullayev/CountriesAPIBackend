@@ -1,4 +1,5 @@
 const { readFile } = require("fs/promises");
+const path = require("path");
 
 const express = require("express");
 
@@ -14,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", async (req, res, next) => {
-  const data = await readFile(__dirname, "./data/data.json");
+  const data = await readFile(path.resolve(__dirname, "./data/data.json"));
   res.status(200).json({
     countries: JSON.parse(data),
     message: "Fetched data successfully!",
