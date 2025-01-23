@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", async (req, res, next) => {
-  const data = await readFile("./data/data.json");
+  const data = await readFile(__dirname, "./data/data.json");
   res.status(200).json({
     countries: JSON.parse(data),
     message: "Fetched data successfully!",
