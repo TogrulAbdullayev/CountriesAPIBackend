@@ -1,5 +1,5 @@
 const { readFile } = require("fs/promises");
-const path = require("path");
+const path = require("path"); //! NECESSARY IN PRODUCTION, OTHERWISE THE ERROR WILL OCCUR
 
 const express = require("express");
 
@@ -10,7 +10,7 @@ app.use(express.json());
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://countriesapi-b02e8.web.app/, http://localhost:5173/"
+    "https://countriesapi-b02e8.web.app/"
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Methods", "GET");
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", async (req, res, next) => {
-  const data = await readFile(path.resolve(__dirname, "./data/data.json"));
+  const data = await readFile(path.resolve(__dirname, "./data/data.json")); //! NECESSARY IN PRODUCTION, OTHERWISE THE ERROR WILL OCCUR
   res.status(200).json({
     countries: JSON.parse(data),
     message: "Fetched data successfully!",
